@@ -29,6 +29,6 @@ class ThemeCubit extends Cubit<ThemeState> {
     if (savedTheme == "ThemeState.dark") {
       return emit(ThemeState.dark);
     }
-    return emit(ThemeState.dark);
+    return emit(ThemeState.light);
   }
 }

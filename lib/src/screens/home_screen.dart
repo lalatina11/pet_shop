@@ -26,7 +26,10 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () {
           Navigator.of(context).push(AuthScreen.route());
         },
-        child: null,
+        child: Text(
+          "Login",
+          style: TextStyle(color: Colors.white, fontSize: 16),
+        ),
       ),
     );
   }
