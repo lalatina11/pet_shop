@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pet_shop/src/lib/cubits/theme_cubit.dart';
+import 'package:pet_shop/src/lib/cubits/theme/theme_cubit.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-import 'package:pet_shop/src/lib/cubits/theme_state.dart';
+import 'package:pet_shop/src/lib/cubits/theme/theme_state.dart';
 
 class ModeToggle extends StatefulWidget {
   const ModeToggle({super.key});
