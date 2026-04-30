@@ -89,7 +89,9 @@ class _MyAppState extends State<MyApp> {
           home: BlocBuilder<AuthCubit, AuthState>(
             builder: (context, state) {
               if (state is AuthLoading) {
-                return Scaffold(body: CircularProgressIndicator());
+                return Scaffold(
+                  body: Center(child: CircularProgressIndicator()),
+                );
               }
               if (state is AuthLoggedIn) {
                 return HomeScreen();
