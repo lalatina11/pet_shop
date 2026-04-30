@@ -32,6 +32,21 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+  Future<void> login({required String email, required String password}) async {
+    emit(AuthLoading());
+    try {
+      final res = await authRemote.login(email: email, password: password);
+      if (!res.success || res.data == null || res.data.toString().isEmpty) {
+        return emit(AuthError(message: res.message));
+      }
+      print("res $res");
+      sharedPreferences.setString("token", res.data);
+      emit(AuthLoggedIn());
+    } catch (e) {
+      emit(AuthError(message: "Unexpexted error"));
+    }
+  }
+
   Future<void> checkIsLoggedIn() async {
     emit(AuthLoading());
     try {
