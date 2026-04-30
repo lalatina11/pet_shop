@@ -58,30 +58,35 @@ class _HomeScreenUserTabState extends State<HomeScreenUserTab> {
         loading
             ? UserSkeleton()
             : Padding(
-                padding: const EdgeInsets.all(20),
-                child: Row(
-                  spacing: 20,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadiusGeometry.circular(100),
-                      child: Image.network(
-                        "https://imgs.search.brave.com/55nMliVtPWXUSJ8kAiH34dARMoOhS1iHyeUYoMo93tE/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9mbHV0/dGVyLmdpdGh1Yi5p/by9hc3NldHMtZm9y/LWFwaS1kb2NzL2Fz/c2V0cy93aWRnZXRz/L293bC5qcGc",
-                        fit: .cover,
-                        width: 50,
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: .start,
-                      mainAxisAlignment: .start,
+                padding: const EdgeInsets.all(10),
+                child: Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      spacing: 20,
                       children: [
-                        Text(
-                          user!.name,
-                          style: TextStyle(fontSize: 20, fontWeight: .bold),
+                        ClipRRect(
+                          borderRadius: BorderRadiusGeometry.circular(100),
+                          child: Image.network(
+                            "https://imgs.search.brave.com/55nMliVtPWXUSJ8kAiH34dARMoOhS1iHyeUYoMo93tE/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9mbHV0/dGVyLmdpdGh1Yi5p/by9hc3NldHMtZm9y/LWFwaS1kb2NzL2Fz/c2V0cy93aWRnZXRz/L293bC5qcGc",
+                            fit: .cover,
+                            width: 50,
+                          ),
                         ),
-                        Text(user!.email, style: TextStyle(fontSize: 13)),
+                        Column(
+                          crossAxisAlignment: .start,
+                          mainAxisAlignment: .start,
+                          children: [
+                            Text(
+                              user!.name,
+                              style: TextStyle(fontSize: 20, fontWeight: .bold),
+                            ),
+                            Text(user!.email, style: TextStyle(fontSize: 13)),
+                          ],
+                        ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
               ),
         LogoutButton(),
