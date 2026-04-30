@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pet_shop/src/lib/repository/auth_remote_repository.dart';
 import 'package:pet_shop/src/models/user_model.dart';
 import 'package:pet_shop/src/widgets/auth_form/logout_button.dart';
+import 'package:pet_shop/src/widgets/home_screen_tabs/user_skeleton.dart';
 
 class HomeScreenUserTab extends StatefulWidget {
   const HomeScreenUserTab({super.key});
@@ -55,7 +56,7 @@ class _HomeScreenUserTabState extends State<HomeScreenUserTab> {
     return Column(
       children: [
         loading
-            ? Text("Loading...")
+            ? UserSkeleton()
             : Padding(
                 padding: const EdgeInsets.all(20),
                 child: Row(

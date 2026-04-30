@@ -20,7 +20,7 @@ class _LogoutButtonState extends State<LogoutButton> {
   @override
   Widget build(BuildContext context) {
     void handleButton() {
-      context.read<AuthCubit>();
+      context.read<AuthCubit>().logout();
     }
 
     return BlocBuilder<ThemeCubit, ThemeState>(
