@@ -47,6 +47,19 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+  Future<void> logout() async {
+    emit(AuthLoading());
+    print("LOGOUT HIT");
+    try {
+      final token = sharedPreferences.getString("token") ?? "";
+      await authRemote.logout(token: token);
+      sharedPreferences.setString("token", "");
+      emit(AuthInitial());
+    } catch (e) {
+      emit(AuthError(message: "Unexpexted error"));
+    }
+  }
+
   Future<void> checkIsLoggedIn() async {
     emit(AuthLoading());
     try {

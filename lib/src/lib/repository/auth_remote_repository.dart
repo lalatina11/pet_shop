@@ -79,6 +79,31 @@ class AuthRemoteRepository {
     }
   }
 
+  Future<ApiResponse> logout({required String token}) async {
+    try {
+      final res = await http.post(
+        config.getUriFromApiBaseURL(path: "/auth/logout"),
+        headers: {...defaultHeaders, "Authorization": "Bearer $token"},
+      );
+      final result = jsonDecode(res.body);
+      if (!result['success']) {
+        return ApiResponse(
+          success: false,
+          message: result['message'],
+          data: null,
+        );
+      }
+      return ApiResponse(success: true, message: result['message'], data: null);
+    } catch (err) {
+      print("remote error ${err.toString()}");
+      return ApiResponse(
+        success: false,
+        message: "Unexpexted error",
+        data: null,
+      );
+    }
+  }
+
   Future<bool> checkIsLoggedIn({required String token}) async {
     try {
       final res = await http.get(
