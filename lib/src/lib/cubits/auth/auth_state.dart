@@ -8,5 +8,5 @@ final class AuthLoggedIn extends AuthState {}
 
 final class AuthError extends AuthState {
   String message;
-  AuthError(this.message);
+  AuthError({required this.message});
 }

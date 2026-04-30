@@ -9,10 +9,34 @@ class AuthCubit extends Cubit<AuthState> {
 
   AuthCubit({required this.sharedPreferences}) : super(AuthInitial());
 
+  Future<void> register({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
+    emit(AuthLoading());
+    try {
+      final res = await authRemote.register(
+        name: name,
+        email: email,
+        password: password,
+      );
+      if (!res.success || res.data == null || res.data.toString().isEmpty) {
+        return emit(AuthError(message: res.message));
+      }
+      print("res $res");
+      sharedPreferences.setString("token", res.data);
+      emit(AuthLoggedIn());
+    } catch (e) {
+      emit(AuthError(message: "Unexpexted error"));
+    }
+  }
+
   Future<void> checkIsLoggedIn() async {
     emit(AuthLoading());
     try {
       final token = sharedPreferences.getString("token");
+      print("token $token");
       if (token == null || token.isEmpty) {
         return emit(AuthInitial());
       }

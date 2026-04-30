@@ -8,7 +8,7 @@ class EnvConfig {
   String apiBaseUrl() => get(key: "API_BASE_URL");
 
   Uri getUriFromApiBaseURL({required String path}) {
-    final url = '${apiBaseUrl()}/api';
+    final url = '${apiBaseUrl()}/api$path';
     return Uri.parse(url);
   }
 }

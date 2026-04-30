@@ -32,8 +32,8 @@ class AuthFormValidator {
       return "Harap masukkan Nama";
     }
 
-    if (name.length < 8) {
-      return "Harap masukkan Nama min 8 karakter";
+    if (name.length < 3) {
+      return "Harap masukkan Nama min 3 karakter";
     }
     if (name.length > 128) {
       return "Nama tidak boleh melebihi 128 karakter";

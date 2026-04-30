@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_shop/src/lib/widget_color_generator.dart';
 import 'package:pet_shop/src/screens/auth_screen.dart';
 import 'package:pet_shop/src/widgets/mode_toggle.dart';
 
@@ -11,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _color = WidgetColorGenerator();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,15 +22,17 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [Text("Daftar Peliharaan"), ModeToggle()],
         ),
         automaticallyImplyLeading: false,
-        backgroundColor: Theme.of(context).primaryColorLight,
+        backgroundColor: _color.getPrimaryColor(),
       ),
-      body: ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).push(AuthScreen.route());
-        },
-        child: Text(
-          "Login",
-          style: TextStyle(color: Colors.white, fontSize: 16),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).push(AuthScreen.route());
+          },
+          child: Text(
+            "Login",
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
         ),
       ),
     );
