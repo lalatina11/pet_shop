@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:pet_shop/src/lib/config/env_config.dart';
 import 'package:pet_shop/src/models/pet_model.dart';
 import 'package:pet_shop/src/widgets/home_screen_tabs/pet_skeleton.dart';
+import 'package:pet_shop/src/widgets/pet/pet_card.dart';
 
 class HomeScreenHomeTab extends StatefulWidget {
   const HomeScreenHomeTab({super.key});
@@ -69,32 +70,7 @@ class _HomeScreenHomeTabState extends State<HomeScreenHomeTab> {
       itemCount: pets.length,
       itemBuilder: (context, index) {
         final pet = pets[index];
-        return Card(
-          margin: const EdgeInsets.only(bottom: 12),
-          clipBehavior: Clip.antiAlias,
-          child: ListTile(
-            contentPadding: const EdgeInsets.all(12),
-            leading: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.network(
-                pet.image,
-                width: 56,
-                height: 56,
-                fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => const Icon(Icons.pets, size: 56),
-              ),
-            ),
-            title: Text(
-              pet.name,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-            subtitle: Text('${pet.type} • ${pet.breed} • ${pet.age} tahun'),
-            trailing: Text(
-              'Rp ${pet.price}',
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ),
-        );
+        return PetCard(pet: pet);
       },
     );
   }

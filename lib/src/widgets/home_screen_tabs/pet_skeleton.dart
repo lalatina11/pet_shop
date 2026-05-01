@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
-// ---------------------------------------------------------------------------
-// Shimmer skeleton untuk satu card pet
-// ---------------------------------------------------------------------------
 class PetSkeleton extends StatefulWidget {
-  const PetSkeleton();
+  const PetSkeleton({super.key});
 
   @override
   State<PetSkeleton> createState() => PetSkeletonState();
@@ -59,44 +56,44 @@ class PetSkeletonState extends State<PetSkeleton>
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.only(bottom: 12),
       child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          spacing: 10,
           children: [
-            // Gambar placeholder
+            // Gambar placeholder — sama persis dengan ClipRRect di PetCard
             AnimatedBuilder(
               animation: _animation,
               builder: (_, __) => Opacity(
                 opacity: _animation.value,
                 child: Container(
-                  width: 56,
-                  height: 56,
+                  width: double.infinity,
+                  height: 130,
                   decoration: BoxDecoration(
                     color: Colors.grey.shade300,
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(12),
                   ),
                 ),
               ),
             ),
-            const SizedBox(width: 12),
-            // Teks placeholder
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _box(width: 120, height: 14),
-                  const SizedBox(height: 8),
-                  _box(width: 180, height: 11),
-                  const SizedBox(height: 6),
-                  _box(width: 80, height: 11),
-                ],
-              ),
+
+            // "Jenis: ..." placeholder
+            Align(
+              alignment: Alignment.centerLeft,
+              child: _box(width: 160, height: 14),
             ),
-            const SizedBox(width: 12),
-            // Harga placeholder
-            _box(width: 70, height: 13),
+
+            // "Gender: ..." placeholder
+            Align(
+              alignment: Alignment.centerLeft,
+              child: _box(width: 110, height: 14),
+            ),
+
+            // "Harga: ..." placeholder
+            Align(
+              alignment: Alignment.centerLeft,
+              child: _box(width: 130, height: 14),
+            ),
           ],
         ),
       ),
