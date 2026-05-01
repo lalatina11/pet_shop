@@ -24,7 +24,6 @@ class AuthCubit extends Cubit<AuthState> {
       if (!res.success || res.data == null || res.data.toString().isEmpty) {
         return emit(AuthError(message: res.message));
       }
-      print("res $res");
       sharedPreferences.setString("token", res.data);
       emit(AuthLoggedIn());
     } catch (e) {
@@ -39,7 +38,6 @@ class AuthCubit extends Cubit<AuthState> {
       if (!res.success || res.data == null || res.data.toString().isEmpty) {
         return emit(AuthError(message: res.message));
       }
-      print("res $res");
       sharedPreferences.setString("token", res.data);
       emit(AuthLoggedIn());
     } catch (e) {
@@ -49,7 +47,6 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> logout() async {
     emit(AuthLoading());
-    print("LOGOUT HIT");
     try {
       final token = sharedPreferences.getString("token") ?? "";
       await authRemote.logout(token: token);
@@ -64,7 +61,6 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
     try {
       final token = sharedPreferences.getString("token");
-      print("token $token");
       if (token == null || token.isEmpty) {
         return emit(AuthInitial());
       }

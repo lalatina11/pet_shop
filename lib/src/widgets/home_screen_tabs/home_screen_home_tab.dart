@@ -34,9 +34,7 @@ class _HomeScreenHomeTabState extends State<HomeScreenHomeTab> {
           pets = petlist;
         });
       }
-      print("pets $pets");
     } catch (e) {
-      print(e);
     } finally {
       setState(() {
         isLoading = false;

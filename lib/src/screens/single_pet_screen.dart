@@ -121,13 +121,25 @@ class _SinglePetScreenState extends State<SinglePetScreen> {
               ),
             ),
           ),
-          Row(
-            mainAxisAlignment: .center,
-            spacing: 20,
-            children: [
-              ElevatedButton(onPressed: () {}, child: Text("Checkout")),
-              ElevatedButton(onPressed: () {}, child: Text("+ Keranjang")),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text("Checkout"),
+                  ),
+                ),
+                SizedBox(width: 10),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text("+ Keranjang"),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),

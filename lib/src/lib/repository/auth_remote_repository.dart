@@ -38,7 +38,6 @@ class AuthRemoteRepository {
         data: result['data']['token'],
       );
     } catch (err) {
-      print("remote error ${err.toString()}");
       return ApiResponse(
         success: false,
         message: "Unexpexted error",
@@ -71,7 +70,6 @@ class AuthRemoteRepository {
         data: result['data']['token'],
       );
     } catch (err) {
-      print("remote error ${err.toString()}");
       return ApiResponse(
         success: false,
         message: "Unexpexted error",
@@ -96,7 +94,6 @@ class AuthRemoteRepository {
       }
       return ApiResponse(success: true, message: result['message'], data: null);
     } catch (err) {
-      print("remote error ${err.toString()}");
       return ApiResponse(
         success: false,
         message: "Unexpexted error",
