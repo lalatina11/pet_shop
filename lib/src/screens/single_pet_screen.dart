@@ -102,7 +102,35 @@ class _SinglePetScreenState extends State<SinglePetScreen> {
         ),
         backgroundColor: _color.getPrimaryColor(),
       ),
-      body: PetCard(pet: pet!),
+      body: Column(
+        children: [
+          PetCard(pet: pet!),
+          Container(
+            alignment: .centerStart,
+            width: .infinity,
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: .start,
+                  children: [
+                    Text("Nama: ${pet!.name}"),
+                    Text("Deskripsi: ${pet!.description}"),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: .center,
+            spacing: 20,
+            children: [
+              ElevatedButton(onPressed: () {}, child: Text("Checkout")),
+              ElevatedButton(onPressed: () {}, child: Text("+ Keranjang")),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
