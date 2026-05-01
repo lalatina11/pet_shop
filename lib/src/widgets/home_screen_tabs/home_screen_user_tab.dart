@@ -22,15 +22,9 @@ class _HomeScreenUserTabState extends State<HomeScreenUserTab> {
         loading = true;
       });
       final res = await authRemote.getUserData();
-      print(res);
       if (res.success) {
-        final data = res.data as Map<String, dynamic>;
-        final result = UserModel(
-          email: data['email'],
-          id: data['id'],
-          name: data['name'],
-          image: data['image'],
-        );
+        final data = res.data;
+        final result = UserModel.fromMap(data);
         setState(() {
           user = result;
         });
@@ -78,10 +72,13 @@ class _HomeScreenUserTabState extends State<HomeScreenUserTab> {
                           mainAxisAlignment: .start,
                           children: [
                             Text(
-                              user!.name,
+                              user?.name ?? "No User",
                               style: TextStyle(fontSize: 20, fontWeight: .bold),
                             ),
-                            Text(user!.email, style: TextStyle(fontSize: 13)),
+                            Text(
+                              user?.email ?? "No Email",
+                              style: TextStyle(fontSize: 13),
+                            ),
                           ],
                         ),
                       ],

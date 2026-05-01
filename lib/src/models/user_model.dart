@@ -13,19 +13,32 @@ class UserModel {
   String email;
   String name;
   String? image;
+  DateTime createdAt;
+  DateTime updatedAt;
   UserModel({
     required this.id,
     required this.email,
     required this.name,
     this.image,
+    required this.createdAt,
+    required this.updatedAt,
   });
 
-  UserModel copyWith({String? id, String? email, String? name, String? image}) {
+  UserModel copyWith({
+    String? id,
+    String? email,
+    String? name,
+    String? image,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) {
     return UserModel(
       id: id ?? this.id,
       email: email ?? this.email,
       name: name ?? this.name,
       image: image ?? this.image,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
     );
   }
 
@@ -35,6 +48,8 @@ class UserModel {
       'email': email,
       'name': name,
       'image': image,
+      'createdAt': createdAt.millisecondsSinceEpoch,
+      'updatedAt': updatedAt.millisecondsSinceEpoch,
     };
   }
 
@@ -44,6 +59,8 @@ class UserModel {
       email: map['email'] as String,
       name: map['name'] as String,
       image: map['image'] != null ? map['image'] as String : null,
+      createdAt: DateTime.parse(map['createdAt'] as String),
+      updatedAt: DateTime.parse(map['updatedAt'] as String),
     );
   }
 
@@ -54,7 +71,7 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(id: $id, email: $email, name: $name, image: $image)';
+    return 'UserModel(id: $id, email: $email, name: $name, image: $image, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -64,11 +81,18 @@ class UserModel {
     return other.id == id &&
         other.email == email &&
         other.name == name &&
-        other.image == image;
+        other.image == image &&
+        other.createdAt == createdAt &&
+        other.updatedAt == updatedAt;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^ email.hashCode ^ name.hashCode ^ image.hashCode;
+    return id.hashCode ^
+        email.hashCode ^
+        name.hashCode ^
+        image.hashCode ^
+        createdAt.hashCode ^
+        updatedAt.hashCode;
   }
 }
