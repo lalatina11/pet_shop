@@ -30,7 +30,6 @@ class _LogoutButtonState extends State<LogoutButton> {
             return SizedBox(
               width: 140,
               child: ElevatedButton(
-                style: ElevatedButton.styleFrom(),
                 onPressed: state is AuthLoading ? null : handleButton,
                 child: Row(
                   mainAxisAlignment: .center,

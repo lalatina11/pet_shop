@@ -78,7 +78,6 @@ class _MyAppState extends State<MyApp> {
                   borderRadius: BorderRadiusGeometry.circular(10),
                 ),
                 backgroundColor: _color.getPrimaryColor(),
-                minimumSize: Size(.infinity, 50),
               ),
             ),
             appBarTheme: AppBarThemeData(
@@ -94,7 +93,7 @@ class _MyAppState extends State<MyApp> {
                 );
               }
               if (state is AuthLoggedIn) {
-                return HomeScreen();
+                return HomeScreen(index: 0);
               }
               return AuthScreen();
             },

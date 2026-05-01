@@ -14,7 +14,7 @@ class PetCard extends StatefulWidget {
 class _PetCardState extends State<PetCard> {
   final formatter = NumberFormat.currency(
     locale: 'id_ID',
-    symbol: '\Rp', // Optional: specify symbol explicitly
+    symbol: 'Rp', // Optional: specify symbol explicitly
     decimalDigits: 1,
   );
   @override

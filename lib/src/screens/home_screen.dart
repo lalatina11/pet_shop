@@ -11,16 +11,17 @@ import 'package:pet_shop/src/widgets/home_screen_tabs/home_screen_user_tab.dart'
 import 'package:pet_shop/src/widgets/mode_toggle.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-  static MaterialPageRoute route() =>
-      MaterialPageRoute(builder: (context) => HomeScreen());
+  final int index;
+  const HomeScreen({super.key, required this.index});
+  static MaterialPageRoute route({required int index}) =>
+      MaterialPageRoute(builder: (context) => HomeScreen(index: index));
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   final _color = WidgetColorGenerator();
-  int _selectedTab = 0;
+  int? _selectedTab;
 
   void _handleSelectTab(int index) {
     setState(() {
@@ -38,6 +39,9 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    setState(() {
+      _selectedTab = widget.index;
+    });
   }
 
   @override
@@ -58,11 +62,11 @@ class _HomeScreenState extends State<HomeScreen> {
           }
         },
         builder: (context, state) {
-          return _tabList[_selectedTab];
+          return _tabList[_selectedTab!];
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedTab,
+        currentIndex: _selectedTab!,
         onTap: _handleSelectTab,
         type: BottomNavigationBarType.fixed,
         items: [

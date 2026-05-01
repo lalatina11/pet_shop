@@ -48,7 +48,7 @@ class _RegisterFormState extends State<RegisterForm> {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is AuthLoggedIn) {
-          Navigator.of(context).push(HomeScreen.route());
+          Navigator.of(context).push(HomeScreen.route(index: 0));
         }
       },
       builder: (context, state) {
@@ -99,6 +99,9 @@ class _RegisterFormState extends State<RegisterForm> {
                   ],
                 ),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(.infinity, 50),
+                  ),
                   onPressed: handleForm,
                   child: Text("Daftar", style: TextStyle(color: Colors.white)),
                 ),
